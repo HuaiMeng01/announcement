@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROJECT: HANDS-FREE // 报名成功</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --bg: #0a0c0a;
+    --surface: #111511;
+    --line: #1f2820;
+    --line-bright: #2a3a2c;
+    --amber: #ffb000;
+    --amber-dim: #8a5f00;
+    --green: #00ff9f;
+    --green-dim: #006644;
+    --white: #e8f0e8;
+    --gray: #6a7a6a;
+    --gray-dim: #3a4a3c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    overflow-x: hidden;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+      0deg, transparent 0, transparent 2px,
+      rgba(0, 255, 159, 0.015) 2px, rgba(0, 255, 159, 0.015) 4px
+    );
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .statusbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    padding: 10px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  .status-left { display: flex; gap: 16px; align-items: center; }
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--green); box-shadow: 0 0 6px var(--green);
+    animation: blink 2s ease-in-out infinite;
+  }
+  @keyframes blink { 50% { opacity: 0.3; } }
+
+  .center {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .card {
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .check {
+    width: 72px; height: 72px;
+    border: 2px solid var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 36px;
+    color: var(--green);
+    box-shadow: 0 0 24px rgba(0, 255, 159, 0.15);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    50% { box-shadow: 0 0 36px rgba(0, 255, 159, 0.3); }
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .card h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+  .card h1 .glow { color: var(--green); text-shadow: 0 0 20px rgba(0,255,159,0.3); }
+
+  .card p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 8px;
+  }
+  .card p strong { color: var(--white); font-weight: 500; }
+
+  .next-steps {
+    margin: 32px 0;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    text-align: left;
+    padding: 24px;
+  }
+
+  .next-steps h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .step {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: var(--gray);
+  }
+
+  .step:last-child { margin-bottom: 0; }
+
+  .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--green);
+    flex-shrink: 0;
+    width: 20px;
+  }
+
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: var(--amber);
+    color: #000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    border-radius: 2px;
+  }
+
+  .back-btn:hover {
+    background: var(--green);
+    box-shadow: 0 0 24px rgba(0, 255, 159, 0.3);
+  }
+
+  .back-btn::before { content: "<"; opacity: 0.5; }
+
+  .footer {
+    text-align: center;
+    padding: 24px 20px 40px;
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--gray-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<div class="statusbar">
+  <div class="status-left">
+    <div class="status-dot"></div>
+    <span>SIGNUP COMPLETE</span>
+  </div>
+  <div style="color: var(--amber-dim);">STATUS: OK</div>
+</div>
+
+<div class="center">
+  <div class="card">
+    <div class="check">✓</div>
+    <div class="tag">REGISTRATION RECEIVED</div>
+    <h1>报名<span class="glow">成功</span></h1>
+    <p>你的报名信息已提交，我会在 <strong>24 小时内</strong> 通过你留下的联系方式与你取得联系。</p>
+    <p>请留意手机短信 / 微信 / QQ 消息。</p>
+
+    <div class="next-steps">
+      <h2>// 接下来</h2>
+      <div class="step">
+        <span class="step-num">01</span>
+        <span>我会根据手机型号兼容性筛选 3 位测试者</span>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <span>选中后，通过你的联系方式发送测试安装包</span>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <span>安装后体验 AI 操控手机功能，为期 2 天</span>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <span>提交体验报告，获得 <strong style="color:var(--amber)">1 个月 Plus 会员</strong> 奖励</span>
+      </div>
+    </div>
+
+    <a href="https://huaimeng01.github.io/announcement/" class="back-btn">返回公告页</a>
+  </div>
+</div>
+
+<div class="footer">
+  PROJECT HANDS-FREE ——— BETA TEST PROGRAM ——— 2026
+</div>
+
+</body>
+</html>
