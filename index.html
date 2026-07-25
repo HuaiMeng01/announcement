@@ -564,7 +564,7 @@
       你只管 <span class="glow">说话</span>
     </h1>
     <p class="hero-sub">
-      用一句自然语言下达指令，AI 自动完成<strong>打开应用、点击按钮、输入文字、切换设置</strong>—— 全程闭环，无需动手。
+      用一句自然语言下达指令，AI 自动完成<strong>打开应用、修改系统设置、锁定应用、感知屏幕状态</strong>—— 改完即回读验证，全程闭环，无需动手。
     </p>
     <div class="hero-meta">
       <div>STATUS: <span class="val">ACTIVE</span></div>
@@ -586,49 +586,49 @@
         <span class="cap-id">F-01</span>
         <div class="cap-icon">[APP]</div>
         <div class="cap-name">打开应用</div>
-        <div class="cap-desc">按名称/包名启动<br>支持快捷指令极速打开</div>
+        <div class="cap-desc">按名称/包名启动应用<br>Intent直达,无需手动找图标</div>
       </div>
       <div class="cap">
         <span class="cap-id">F-02</span>
-        <div class="cap-icon">[TAP]</div>
-        <div class="cap-name">智能点击</div>
-        <div class="cap-desc">按文字或坐标精准点击<br>系统API+节点遍历双兜底</div>
+        <div class="cap-icon">[SET]</div>
+        <div class="cap-name">系统设置直改</div>
+        <div class="cap-desc">WiFi/蓝牙/亮度/音量等13项<br>改完回读验证真实状态</div>
       </div>
       <div class="cap">
         <span class="cap-id">F-03</span>
-        <div class="cap-icon">[INP]</div>
-        <div class="cap-name">自动输入</div>
-        <div class="cap-desc">聚焦输入框后填入文字<br>支持搜索/表单自动填写</div>
+        <div class="cap-icon">[LCK]</div>
+        <div class="cap-name">应用锁定</div>
+        <div class="cap-desc">Shizuku挂起指定应用<br>解锁/锁定均回读验证</div>
       </div>
       <div class="cap">
         <span class="cap-id">F-04</span>
-        <div class="cap-icon">[SCL]</div>
-        <div class="cap-name">屏幕滚动</div>
-        <div class="cap-desc">上下左右四方向滑动<br>浏览列表/查看更多内容</div>
-      </div>
-      <div class="cap">
-        <span class="cap-id">F-05</span>
-        <div class="cap-icon">[SET]</div>
-        <div class="cap-name">系统设置</div>
-        <div class="cap-desc">WiFi/蓝牙/亮度/音量<br>13项系统设置直接修改</div>
-      </div>
-      <div class="cap">
-        <span class="cap-id">F-06</span>
-        <div class="cap-icon">[LCK]</div>
-        <div class="cap-name">应用锁定</div>
-        <div class="cap-desc">通过Shizuku挂起应用<br>解锁/锁定可回读验证</div>
-      </div>
-      <div class="cap">
-        <span class="cap-id">F-07</span>
         <div class="cap-icon">[NAV]</div>
         <div class="cap-name">导航操作</div>
         <div class="cap-desc">返回/回桌面/多任务<br>全局系统操作一键执行</div>
       </div>
       <div class="cap">
+        <span class="cap-id">F-05</span>
+        <div class="cap-icon">[SCN]</div>
+        <div class="cap-name">状态感知</div>
+        <div class="cap-desc">获取前台应用/屏幕信息<br>让AI知道当前在哪个界面</div>
+      </div>
+      <div class="cap">
+        <span class="cap-id">F-06</span>
+        <div class="cap-icon">[SLP]</div>
+        <div class="cap-name">锁屏控制</div>
+        <div class="cap-desc">一句话立即锁定屏幕<br>不用按电源键</div>
+      </div>
+      <div class="cap">
+        <span class="cap-id">F-07</span>
+        <div class="cap-icon">[DLG]</div>
+        <div class="cap-name">弹窗处理</div>
+        <div class="cap-desc">自动处理系统/APP弹窗<br>允许/同意/稍后一键应对</div>
+      </div>
+      <div class="cap">
         <span class="cap-id">F-08</span>
-        <div class="cap-icon">[VIS]</div>
-        <div class="cap-name">视觉感知</div>
-        <div class="cap-desc">截图+AI视觉识别辅助<br>DOM不足时自动启用</div>
+        <div class="cap-icon">[SCR]</div>
+        <div class="cap-name">屏幕滚动</div>
+        <div class="cap-desc">上下左右四方向滑动<br>浏览列表/查看更多内容</div>
       </div>
     </div>
   </div>
@@ -676,7 +676,7 @@
         <div class="flow-marker">01</div>
         <div class="flow-content">
           <h3>指令输入 <span class="pill pill-green">INPUT</span></h3>
-          <p>你说出自然语言指令，例如"打开网易云搜索周杰伦"或"把亮度调到最高"</p>
+          <p>你说出自然语言指令，例如"打开网易云"或"把亮度调到最高，顺便锁掉抖音"</p>
         </div>
       </div>
       <div class="flow-step">
@@ -689,15 +689,15 @@
       <div class="flow-step">
         <div class="flow-marker">03</div>
         <div class="flow-content">
-          <h3>屏幕感知 <span class="pill pill-green">DOM+VISION</span></h3>
-          <p>无障碍服务读取屏幕节点树，DOM不足时自动截图让AI视觉识别</p>
+          <h3>状态感知 <span class="pill pill-green">AWARE</span></h3>
+          <p>读取前台应用与屏幕信息，让 AI 知道当前在哪个界面、该做什么</p>
         </div>
       </div>
       <div class="flow-step">
         <div class="flow-marker">04</div>
         <div class="flow-content">
-          <h3>自动执行 <span class="pill pill-amber">EXECUTE</span></h3>
-          <p>点击、滑动、输入、返回 — 每步操作后等待界面稳定再进入下一轮</p>
+          <h3>执行 + 回读验证 <span class="pill pill-amber">VERIFY</span></h3>
+          <p>打开应用、改设置、锁应用 — 每步执行后回读系统真实状态确认生效</p>
         </div>
       </div>
       <div class="flow-step active">
