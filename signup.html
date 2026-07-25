@@ -375,15 +375,14 @@
 
     <!-- 可测试时间 -->
     <div class="field">
-      <div class="field-label">可参与测试的时间 <span class="req">*</span></div>
-      <select name="可测试时间" class="field-select" required>
-        <option value="">— 选择你方便的时段 —</option>
-        <option value="本周末（7/26-7/27）">本周末（7/26 - 7/27）</option>
-        <option value="工作日晚间">工作日晚间（任意两天）</option>
-        <option value="下周任意两天">下周任意两天</option>
-        <option value="时间灵活">时间灵活，随时可以</option>
+      <div class="field-label">能否参加 7/27 - 7/28 测试？ <span class="req">*</span></div>
+      <select name="测试时间确认" class="field-select" required>
+        <option value="">— 请确认你的时间 —</option>
+        <option value="可以参加 7/27-7/28">可以参加（7月27 - 28日，两天全程）</option>
+        <option value="仅能参加一天">仅能参加其中一天</option>
+        <option value="时间有冲突">时间有冲突，希望调整</option>
       </select>
-      <div class="field-hint">// 测试周期为 2 天，选择你连续方便的时段</div>
+      <div class="field-hint">// 测试周期固定为 7月27日 - 28日，请确认能否全程参与</div>
     </div>
 
     <!-- 测试动机 -->
